@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrbitView | Tasks</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <div id="app-shell">
+    <main id="page-content">
+      <div class="page-header">
+        <div>
+          <h1>Tasks</h1>
+          <p class="subtitle">Milestones across all projects</p>
+        </div>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="filter-bar card">
+        <div class="filter-group filter-search">
+          <input type="text" id="task-search-input" placeholder="Search milestones by title..." />
+        </div>
+        <div class="filter-group">
+          <label for="project-filter" class="filter-label">Project:</label>
+          <select id="project-filter">
+            <option value="">All Projects</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label for="task-status-filter" class="filter-label">Status:</label>
+          <select id="task-status-filter">
+            <option value="">All Statuses</option>
+            <option value="ACHIVED">Achieved</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="PENDING">Pending</option>
+            <option value="OVERDUE">Overdue</option>
+          </select>
+        </div>
+        <button class="btn btn-secondary btn-sm hidden" id="clear-task-filters-btn">Clear</button>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Milestone</th>
+              <th>Project</th>
+              <th>Status</th>
+              <th>Due Date</th>
+              <th>Completion Date</th>
+            </tr>
+          </thead>
+          <tbody id="tasks-tbody">
+            <tr class="loading-row"><td colspan="5">Loading tasks...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-muted" style="margin-top:12px; font-size:12.5px;">
+        Milestone status updates aren't available through the current backend API
+        (no create/update endpoint is exposed for milestones) - this view is read-only.
+      </p>
+    </main>
+  </div>
+
+  <script src="js/api.js?v=2"></script>
+  <script src="js/common.js?v=2"></script>
+  <script src="js/tasks.js?v=2"></script>
+</body>
+</html>

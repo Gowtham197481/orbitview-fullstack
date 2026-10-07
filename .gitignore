@@ -1,0 +1,37 @@
+# Target build directories
+target/
+**/target/
+*.class
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Node / NPM
+node_modules/
+**/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment and sensitive files
+.env
+.env.*
+*.env
+
+# IDE and Editor files
+.idea/
+*.iml
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/

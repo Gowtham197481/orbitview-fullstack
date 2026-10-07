@@ -1,0 +1,67 @@
+/* =========================================================
+   OrbitView - login.css
+   Styles specific to the login page (index.html)
+   ========================================================= */
+
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #171b2c 0%, #2a3358 45%, #3653e0 100%);
+  padding: 20px;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 380px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 50px rgba(10, 14, 30, 0.35);
+  padding: 34px 32px 28px;
+}
+
+.login-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+
+.login-brand .logo-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 5px rgba(54, 83, 224, 0.18);
+}
+
+.login-brand span {
+  font-size: 20px;
+  font-weight: 700;
+  color: #171b2c;
+  letter-spacing: 0.3px;
+}
+
+.login-card .login-subtitle {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.login-card form {
+  margin-top: 4px;
+}
+
+.login-footer-note {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.login-submit {
+  margin-top: 6px;
+}

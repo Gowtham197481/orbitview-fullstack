@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrbitView | Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body class="login-page">
+
+  <div class="login-card">
+    <div class="login-brand">
+      <span class="logo-dot"></span>
+      <span>OrbitView</span>
+    </div>
+    <p class="login-subtitle">Project &amp; resource management console</p>
+
+    <div id="login-alert" class="alert alert-error" role="alert"></div>
+
+    <form id="login-form" novalidate>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" autocomplete="username" placeholder="e.g. jane.doe" />
+        <div class="field-error" id="username-error"></div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Your password" />
+        <div class="field-error" id="password-error"></div>
+      </div>
+
+      <button type="submit" class="btn btn-block login-submit" id="login-submit">
+        <span id="login-submit-label">Sign In</span>
+        <span class="spinner hidden" id="login-submit-spinner"></span>
+      </button>
+    </form>
+
+    <p class="login-footer-note">
+      Use the credentials for an existing OrbitView account.<br />
+      Contact your administrator if you don't have one.
+    </p>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

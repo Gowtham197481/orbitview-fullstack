@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OrbitView | Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <div id="app-shell">
+    <main id="page-content">
+      <div class="page-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="subtitle">Overview of projects, departments and budget</p>
+        </div>
+      </div>
+
+      <!-- Main Metric Cards -->
+      <div class="card-grid" id="stats-grid">
+        <a href="projects.html" class="card stat-card projects" id="card-total-projects" title="View all projects">
+          <div class="stat-icon">&#128193;</div>
+          <div class="stat-label">Total Projects</div>
+          <div class="stat-value" id="stat-total-projects">-</div>
+        </a>
+
+        <a href="projects.html?status=ACTIVE" class="card stat-card active" id="card-active-projects" title="View active projects">
+          <div class="stat-icon">&#9889;</div>
+          <div class="stat-label">Active Projects</div>
+          <div class="stat-value" id="stat-active-projects">-</div>
+        </a>
+
+        <a href="departments.html" class="card stat-card departments" id="card-total-departments" title="View departments">
+          <div class="stat-icon">&#9776;</div>
+          <div class="stat-label">Departments</div>
+          <div class="stat-value" id="stat-total-departments">-</div>
+        </a>
+
+        <a href="departments.html?view=budget" class="card stat-card budget" id="card-total-budget" title="View budget breakdown">
+          <div class="stat-icon">&#128176;</div>
+          <div class="stat-label">Total Budget</div>
+          <div class="stat-value" id="stat-total-budget">-</div>
+        </a>
+      </div>
+
+      <!-- Strategic Director Global Department Summary -->
+      <div id="summary-section" class="hidden" style="margin-top: 24px;">
+        <div class="section-title">Global Department Summary</div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Department</th>
+                <th>Projects</th>
+                <th>Allocated Budget</th>
+                <th>Remaining Budget</th>
+                <th>Avg. Completion</th>
+              </tr>
+            </thead>
+            <tbody id="summary-tbody">
+              <tr class="loading-row"><td colspan="5">Loading...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/api.js?v=2"></script>
+  <script src="js/common.js?v=2"></script>
+  <script src="js/dashboard.js?v=2"></script>
+</body>
+</html>
