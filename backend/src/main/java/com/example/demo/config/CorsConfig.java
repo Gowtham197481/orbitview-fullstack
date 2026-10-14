@@ -1,23 +1,38 @@
 package com.example.demo.config;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.List;
-
 
 @Configuration
 public class CorsConfig {
 
+    @Value("${cors.allowed-origins:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5500}")
+    private String allowedOrigins;
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
+
+        List<String> origins = Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .toList();
+
+        if (origins.contains("*")) {
+            configuration.addAllowedOriginPattern("*");
+        } else {
+            configuration.setAllowedOrigins(origins);
+        }
+
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept", "Origin", "X-Requested-With"));
         configuration.setAllowCredentials(true);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -25,18 +40,3 @@ public class CorsConfig {
         return source;
     }
 }
-
-/*
- * In SecurityConfig.java, add .cors(Customizer.withDefaults()) to the chain so
- * Spring Security picks up the bean above, e.g.:
- *
- *   http
- *       .cors(Customizer.withDefaults())
- *       .csrf(csrf -> csrf.disable())
- *       .authorizeHttpRequests(auth -> auth
- *           .requestMatchers("/login").permitAll()
- *           .anyRequest().authenticated());
- *
- * Without this, every request from the browser (not just POST/PUT) will fail
- * with a CORS error before it even reaches your controllers.
- */

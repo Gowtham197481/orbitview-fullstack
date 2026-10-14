@@ -10,7 +10,14 @@
    ========================================================= */
 
 // Change this if your Spring Boot backend runs on a different host/port.
-const API_BASE_URL = "http://localhost:8080";
+// Supports window.__API_BASE_URL__ or localStorage 'orbitview_api_url' for production deployments,
+// defaulting to http://localhost:8080 in local development.
+const API_BASE_URL =
+  (typeof window !== "undefined" && window.__API_BASE_URL__) ||
+  (typeof localStorage !== "undefined" && localStorage.getItem("orbitview_api_url")) ||
+  (typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+    ? "http://localhost:8080"
+    : (typeof window !== "undefined" ? window.location.origin : "http://localhost:8080"));
 
 // Keys used in localStorage to persist the logged-in session.
 const STORAGE_TOKEN_KEY = "orbitview_token";
